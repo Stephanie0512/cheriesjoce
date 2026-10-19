@@ -204,7 +204,11 @@ a:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
     .profile-text { padding-top: 16px; }
     .service-card { width: 100%; max-width: 420px; }
     .about-container { justify-content: center; text-align: center; }
-    .btn-reserva { padding: 5px 13px; font-size: .78rem; }
+    .btn-reserva {
+        white-space: nowrap;
+        padding: 7px 14px;
+        font-size: .8rem;
+    }
 }
 
 /* En pantallas táctiles no hay cursor: solo un pequeño efecto al tocar */
