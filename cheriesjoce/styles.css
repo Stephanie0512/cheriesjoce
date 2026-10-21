@@ -1,0 +1,245 @@
+:root {
+    --gold: #cb7d74;
+    --gold-light: #fc98fc;
+    --pink: #e98fa5;
+    --pink-dark: #c4617c;
+    --blush: #fdeef1;
+    --sand: #fff8f6;
+    --sea: #3fb5bd;
+    --ink: #cb7d74;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    background: var(--sand);
+    color: var(--ink);
+    line-height: 1.7;
+}
+
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+.brand { font-family: 'Pinyon Script', cursive; }
+
+a:focus-visible { outline: 3px solid var(--sea); outline-offset: 3px; }
+
+/* Brillo suave de los logos 
+@keyframes brillo-logo {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(252, 152, 252, 0), 0 6px 18px rgba(74, 51, 56, .15);
+        filter: brightness(1);
+    }
+    50% {
+        box-shadow: 0 0 22px 6px rgba(252, 152, 252, .45), 0 0 40px 12px rgba(203, 125, 116, .25);
+        filter: brightness(1.12) saturate(1.1);
+    }
+}*/
+
+.logo-img,
+.profile-logo,
+.about-img {
+    animation: brillo-logo 3.6s ease-in-out infinite;
+}
+
+/* Encabezado */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 5vw;
+    background: rgba(255, 248, 246, .94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #f3d9df;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-img { width: 56px; height: 56px; border-radius: 50%; }
+.brand { font-size: 2rem; color: var(--gold); line-height: 1; }
+
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav-link { text-decoration: none; color: var(--ink); font-weight: 400; transition: color .25s; }
+.nav-link:hover { color: var(--pink-dark); }
+
+.btn-reserva {
+    background: var(--pink-dark);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 400;
+    transition: background .25s;
+}
+.btn-reserva:hover { background: var(--gold); }
+
+/* Portada estilo Facebook: banner + perfil */
+.cover { max-width: 1180px; margin: 0 auto; padding: 20px 20px 0; }
+
+.banner { border-radius: 0 0 22px 22px; overflow: hidden; box-shadow: 0 12px 34px rgba(168, 116, 45, .18); }
+.banner img { display: block; width: 100%; height: auto; }
+
+.profile {
+    display: flex;
+    align-items: flex-start;
+    gap: 34px;
+    padding: 0 clamp(10px, 4vw, 50px) 60px;
+}
+
+.profile-logo {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    margin-top: -55px;
+    flex-shrink: 0;
+    border: 6px solid var(--sand);
+    background: var(--sand);
+}
+
+.profile-text { padding-top: 24px; max-width: 60ch; }
+.profile h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); color: var(--gold); line-height: 1.1; }
+.kind { color: #8a6a70; margin-bottom: 14px; }
+.welcome { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--pink-dark); margin-bottom: 6px; }
+.profile-text > p:not(.kind):not(.welcome) { margin-bottom: 22px; }
+
+.btn-primary {
+    display: inline-block;
+    background: var(--pink-dark);
+    color: #fff;
+    padding: 13px 32px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background .25s, transform .25s;
+}
+.btn-primary:hover { background: var(--gold); transform: translateY(-2px); }
+
+/* Servicios */
+.services { padding: 70px 5vw 90px; max-width: 1180px; margin: 0 auto; }
+.section-head { margin-bottom: 36px; }
+.section-head h2 { font-size: clamp(2rem, 4vw, 2.8rem); color: var(--gold); }
+.section-head p { color: #8a6a70; }
+
+.service-grid {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+}
+
+.service-card {
+    position: relative;
+    width: 310px;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #f3d9df;
+    box-shadow: 0 8px 22px rgba(168, 116, 45, .10);
+    display: flex;
+    flex-direction: column;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+/* Las tarjetas crecen y se elevan al pasar el cursor */
+.service-card:hover,
+.service-card:focus-within {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 22px 44px rgba(196, 97, 124, .24);
+    border-color: var(--pink);
+    z-index: 2;
+}
+
+.card-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: linear-gradient(135deg, #fdeef1, #f8d3dc 60%, #f3e2c4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-media::before { content: attr(data-emoji); font-size: 3.4rem; position: absolute; }
+.card-media img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .6s ease;
+}
+.service-card:hover .card-media img { transform: scale(1.08); }
+
+.card-body { padding: 22px 24px 28px; }
+.card-body h3 { font-size: 1.7rem; color: var(--pink-dark); line-height: 1.2; margin-bottom: 8px; transition: color .3s; }
+.service-card:hover .card-body h3 { color: var(--gold); }
+.card-body p { font-size: .95rem; }
+
+/* Nosotros */
+.about { background: var(--blush); padding: 90px 5vw; }
+.about-container { max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+.about-img { width: 230px; height: 230px; border-radius: 50%; }
+.about-text { flex: 1; min-width: 260px; }
+.about-text h2 { font-size: 2.4rem; color: var(--gold); margin-bottom: 12px; }
+.about-text p { max-width: 55ch; font-size: 1.05rem; }
+
+/* Contacto */
+.contact { text-align: center; padding: 90px 5vw; }
+.contact h2 { font-size: clamp(2rem, 4vw, 2.8rem); color: var(--gold); }
+.contact p { margin: 8px 0 26px; }
+
+/* Pie */
+.footer { background: var(--gold); color: #fff6e8; text-align: center; padding: 28px 5vw; font-size: .9rem; }
+.footer-social { margin-bottom: 14px; }
+.footer-social p { margin-bottom: 10px; font-size: 1rem; }
+
+.social-icons { display: flex; justify-content: center; gap: 14px; }
+
+.social-icons a {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, .18);
+    color: #fff;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: background .3s, color .3s, transform .3s;
+}
+
+.social-icons a:hover {
+    background: #fff;
+    color: var(--pink-dark);
+    transform: translateY(-4px);
+}
+
+/* Móvil */
+@media (max-width: 760px) {
+    .nav-link { display: none; }
+    .cover { padding: 12px 12px 0; }
+    .profile { flex-direction: column; align-items: center; text-align: center; gap: 0; padding-bottom: 44px; }
+    .profile-logo { width: 150px; height: 150px; margin-top: -60px; }
+    .profile-text { padding-top: 16px; }
+    .service-card { width: 100%; max-width: 420px; }
+    .about-container { justify-content: center; text-align: center; }
+}
+
+/* En pantallas táctiles no hay cursor: solo un pequeño efecto al tocar */
+@media (hover: none) {
+    .service-card:hover { transform: none; }
+    .service-card:active { transform: scale(1.03); }
+}
+
+/* Respeta a quien desactiva las animaciones en su dispositivo */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+    .logo-img, .profile-logo, .about-img { animation: none; }
+    .service-card:hover { transform: none; }
+}
